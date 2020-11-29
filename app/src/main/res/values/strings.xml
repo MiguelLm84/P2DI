@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">App Jardin</string>
+    <string name="todoFab">TODO</string>
+    <string name="imagenAdd">imagenAdd</string>
+</resources>
