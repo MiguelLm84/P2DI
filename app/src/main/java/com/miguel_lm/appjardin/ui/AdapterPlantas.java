@@ -21,13 +21,12 @@ public class AdapterPlantas extends RecyclerView.Adapter<ViewHolderPlanta> {
     private final SeleccionarPlanta selecPlanta;
 
     public AdapterPlantas(final Context context, SeleccionarPlanta selecPlanta){
-        this.listPlanta = RepositorioPlantas.getInstance(context).obtenerPlantas();
         this.context = context;
         this.selecPlanta = selecPlanta;
     }
 
-    public void actualizarListado() {
-        this.listPlanta = RepositorioPlantas.getInstance(context).obtenerPlantas();
+    public void actualizarListado(List<Planta> listaPlantasSeleccionadas) {
+        this.listPlanta = listaPlantasSeleccionadas;
         notifyDataSetChanged();
     }
 
@@ -42,11 +41,11 @@ public class AdapterPlantas extends RecyclerView.Adapter<ViewHolderPlanta> {
     public void onBindViewHolder(@NonNull ViewHolderPlanta holder, int position) {
 
         Planta plantaAPintar = listPlanta.get(position);
-        holder.mostrarPlanta(plantaAPintar,context);
+        holder.mostrarPlanta(plantaAPintar);
     }
 
     @Override
     public int getItemCount() {
-        return listPlanta.size();
+        return listPlanta == null ? 0 : listPlanta.size();
     }
 }

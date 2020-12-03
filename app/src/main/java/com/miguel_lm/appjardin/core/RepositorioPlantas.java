@@ -32,7 +32,13 @@ public class RepositorioPlantas {
     }
 
     public void insertar(Planta nuevaPlanta) {
-        daoPlanta.insertar(nuevaPlanta);
+        if (daoPlanta.buscarPlanta(nuevaPlanta.getNombre()) == null) {
+            daoPlanta.insertar(nuevaPlanta);
+        }
+    }
+
+    public void borrarDatos() {
+        daoPlanta.borrarDatos();
     }
 
     public void actualizarPlanta(Planta planta) {

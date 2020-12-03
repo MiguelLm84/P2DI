@@ -5,26 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00C853"
-    tools:context=".ui.MainActivity">
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="84dp"
-        android:backgroundTint="@color/black"
-        android:clickable="true"
-        android:contentDescription="@string/imagenAdd"
-        android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/add" />
+    tools:context=".ui.ActivityPrincipal">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPlantas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -32,11 +19,39 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <androidx.gridlayout.widget.GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </androidx.gridlayout.widget.GridLayout>
     </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="26dp"
+        android:backgroundTint="#FF3D00"
+        android:clickable="true"
+        android:contentDescription="@string/imagenAdd"
+        android:focusable="true"
+        android:onClick="accionInsertarPlantas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/add" />
+
+    <TextView
+        android:id="@+id/textViewNoPlantas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_sunflower"
+        android:drawablePadding="20dp"
+        android:gravity="center_horizontal"
+        android:padding="30dp"
+        android:text="Pulsa el botón para añadir plantas"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.29000002" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,13 @@ public interface DAOPlanta {
     @Query("SELECT * FROM Plantas")
     List<Planta> obtenerPlantas();
 
+    @Query("SELECT * FROM Plantas WHERE nombre LIKE :nombre")
+    Planta buscarPlanta(String nombre);
+
     @Update
     void actualizarPlanta(Planta planta);
+
+    @Query("DELETE FROM Plantas")
+    void borrarDatos();
 
 }

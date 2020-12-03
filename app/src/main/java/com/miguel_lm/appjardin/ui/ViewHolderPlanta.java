@@ -1,10 +1,10 @@
 package com.miguel_lm.appjardin.ui;
 
-import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,11 +14,11 @@ import com.miguel_lm.appjardin.core.Planta;
 
 public class ViewHolderPlanta extends RecyclerView.ViewHolder{
 
-    private ImageView imagenView;
-    private EditText edNombre;
+    private final ImageView imagenView;
+    private final TextView tvNombre;
     private final LinearLayout linearLayoutItemPlanta;
 
-    private SeleccionarPlanta seleccionarPlanta;
+    private final SeleccionarPlanta seleccionarPlanta;
 
     public ViewHolderPlanta(@NonNull View itemView, SeleccionarPlanta selecPlanta) {
         super(itemView);
@@ -26,21 +26,24 @@ public class ViewHolderPlanta extends RecyclerView.ViewHolder{
         this.seleccionarPlanta = selecPlanta;
 
         imagenView = itemView.findViewById(R.id.imagenPlanta);
-        edNombre = itemView.findViewById(R.id.tvNombrePlanta);
+        tvNombre = itemView.findViewById(R.id.tvNombrePlanta);
 
-        linearLayoutItemPlanta = itemView.findViewById(R.id.constraintLayoutPlanta);
+        linearLayoutItemPlanta = itemView.findViewById(R.id.linearLayoutPlanta);
     }
 
-    public void mostrarPlanta(final Planta planta, final Context context) {
+    public void mostrarPlanta(final Planta planta) {
 
-        imagenView.setBackground(planta.getImagen());
-        edNombre.setText(planta.getNombre());
+        imagenView.setImageResource(planta.getImagen());
+        tvNombre.setText(planta.getNombre());
 
-        linearLayoutItemPlanta.setOnClickListener(new View.OnClickListener() {
+        linearLayoutItemPlanta.setOnClickListener(v -> seleccionarPlanta.plantaInfoPulsado(planta));
+        linearLayoutItemPlanta.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onLongClick(View v) {
 
-                seleccionarPlanta.plantaInfoPulsado(planta);
+                seleccionarPlanta.eliminarPlanta(planta);
+
+                return false;
 
             }
         });
