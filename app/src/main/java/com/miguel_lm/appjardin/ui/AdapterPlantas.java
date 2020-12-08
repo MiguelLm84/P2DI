@@ -41,7 +41,7 @@ public class AdapterPlantas extends RecyclerView.Adapter<ViewHolderPlanta> {
     public void onBindViewHolder(@NonNull ViewHolderPlanta holder, int position) {
 
         Planta plantaAPintar = listPlanta.get(position);
-        holder.mostrarPlanta(plantaAPintar);
+        holder.mostrarPlanta(plantaAPintar,context);
     }
 
     @Override

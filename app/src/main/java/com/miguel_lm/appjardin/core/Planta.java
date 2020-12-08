@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.sql.Blob;
 
 @Entity(tableName = "Plantas")
-public class Planta  {
+public class Planta implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     protected int key;

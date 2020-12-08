@@ -1,5 +1,11 @@
 <resources>
-    <string name="app_name">App Jardin</string>
+    <string name="app_name">My Garden</string>
     <string name="todoFab">TODO</string>
     <string name="imagenAdd">imagenAdd</string>
+    <string name="eliminar_menu_contextual_planta">Eliminar</string>
+    <string name="anhadir_planta">Añadir Planta</string>
+    <string name="eliminar_menu_principal_planta">Eliminar</string>
+    <string name="mygarden_blancoSplash">MyGarden</string>
+    <string name="mygarden_negroSplash">MyGarden</string>
+    <string name="tv_NoPlantas">Pulsa el botón para añadir plantas</string>
 </resources>

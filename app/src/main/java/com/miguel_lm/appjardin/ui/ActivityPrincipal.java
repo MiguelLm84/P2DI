@@ -1,5 +1,6 @@
 package com.miguel_lm.appjardin.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +9,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +32,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -42,6 +47,24 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
 
         listaPlantasEscogidas = new ArrayList<>();
         comprobarElementos();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_principal_planta, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.accionEliminar) {
+            accionEliminar();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void guardarPlantas() {
@@ -113,27 +136,16 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
             @Override
             public void onClick(final DialogInterface dialog, int which) {
 
-                AlertDialog.Builder builderConfirmar = new AlertDialog.Builder(ActivityPrincipal.this);
-                builderConfirmar.setIcon(R.drawable.exclamation);
-                builderConfirmar.setMessage("¿Añadir los elementos?");
-                builderConfirmar.setNegativeButton("Cancelar", null);
-                builderConfirmar.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-
-                        for (int i = plantasSeleccionadas.length-1; i>=0; i--) {
-                            if (plantasSeleccionadas[i]) {
-                                Planta plantaEscogida = listaPlantasParaDialogo.get(i);
-                                listaPlantasEscogidas.add(plantaEscogida);
-                            }
-                        }
-
-                        adapterPlantas.actualizarListado(listaPlantasEscogidas);
-                        comprobarElementos();
-                        Toast.makeText(ActivityPrincipal.this, "Plantas añadidas", Toast.LENGTH_SHORT).show();
+                for (int i = plantasSeleccionadas.length-1; i>=0; i--) {
+                    if (plantasSeleccionadas[i]) {
+                        Planta plantaEscogida = listaPlantasParaDialogo.get(i);
+                        listaPlantasEscogidas.add(plantaEscogida);
                     }
-                });
-                builderConfirmar.create().show();
+                }
+
+                adapterPlantas.actualizarListado(listaPlantasEscogidas);
+                comprobarElementos();
+                Toast.makeText(ActivityPrincipal.this, "Plantas añadidas", Toast.LENGTH_SHORT).show();
             }
         });
         builder.setNegativeButton("Cancelar", null);
@@ -156,11 +168,69 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
 
         Intent intent = new Intent(this, ActivityDetalle.class);
         startActivity(intent);
+
+       //Planta planta = new Planta();
     }
 
     private void comprobarElementos() {
 
         textViewNoPlantas.setVisibility(listaPlantasEscogidas.isEmpty() ? View.VISIBLE : View.GONE);
 
+    }
+
+    private void accionEliminar() {
+
+        final List<Planta> listaPlantas = RepositorioPlantas.getInstance(this).obtenerPlantas();
+
+        AlertDialog.Builder builderElimina = new AlertDialog.Builder(ActivityPrincipal.this);
+        builderElimina.setIcon(R.drawable.remove_symbol);
+        builderElimina.setTitle("Eliminar");
+
+        String[] arrayEntrenamientos = new String[listaPlantas.size()];
+        final boolean[] plantasSeleccionados = new boolean[listaPlantas.size()];
+        for (int i=0; i < listaPlantas.size(); i++)
+            arrayEntrenamientos[i] = listaPlantas.get(i).getNombre();
+        builderElimina.setMultiChoiceItems(arrayEntrenamientos, plantasSeleccionados, new DialogInterface.OnMultiChoiceClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int i, boolean isChecked) {
+                plantasSeleccionados[i] = isChecked;
+            }
+        });
+
+        builderElimina.setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
+
+            List<Planta> listaPlantas = RepositorioPlantas.getInstance(ActivityPrincipal.this).obtenerPlantas();
+
+            @Override
+            public void onClick(final DialogInterface dialog, int which) {
+
+                AlertDialog.Builder builderEliminar_Confirmar = new AlertDialog.Builder(ActivityPrincipal.this);
+                builderEliminar_Confirmar.setIcon(R.drawable.exclamation);
+                builderEliminar_Confirmar.setMessage("¿Eliminar los elementos?");
+                builderEliminar_Confirmar.setNegativeButton("Cancelar", null);
+                builderEliminar_Confirmar.setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+
+                        for (int i = 0 ; i<listaPlantas.size() ; i++)
+                            if (plantasSeleccionados[i])
+                                RepositorioPlantas.getInstance(ActivityPrincipal.this).eliminarPlanta(listaPlantas.get(i));
+
+                        for (int i = listaPlantas.size()-1; i>=0; i--) {
+                            if (plantasSeleccionados[i]) {
+                                listaPlantas.remove(i);
+                            }
+                        }
+                        ActivityPrincipal.this.adapterPlantas.notifyDataSetChanged();
+                        adapterPlantas.actualizarListado(listaPlantas);
+                        Toast.makeText(ActivityPrincipal.this, "Entrenamiento eliminado", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builderEliminar_Confirmar.create().show();
+            }
+        });
+        builderElimina.setNegativeButton("Cancelar", null);
+        builderElimina.create().show();
     }
 }
