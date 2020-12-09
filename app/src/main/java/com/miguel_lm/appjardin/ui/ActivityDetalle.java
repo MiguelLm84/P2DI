@@ -21,8 +21,6 @@ public class ActivityDetalle extends AppCompatActivity {
 
     }
 
-
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
