@@ -18,7 +18,6 @@ public class ActivityDetalle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
 
     @Override

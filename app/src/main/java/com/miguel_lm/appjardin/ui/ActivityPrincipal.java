@@ -76,7 +76,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
         Planta manzanilla = new Planta(R.drawable.manzanilla,"Manzanilla","","");
         Planta dienteDeLeon = new Planta(R.drawable.diente_de_leon,"Diente de León","","");
         Planta cactus = new Planta(R.drawable.cactus,"Cactus","","");
-        Planta pampullo = new Planta(R.drawable.pampullo,"Pampullo","","");
+        Planta crisantemo = new Planta(R.drawable.pampullo,"Crisantemo","","");
         
         RepositorioPlantas repositorioPlantas = RepositorioPlantas.getInstance(this);
         repositorioPlantas.borrarDatos();
@@ -87,7 +87,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
         repositorioPlantas.insertar(manzanilla);
         repositorioPlantas.insertar(dienteDeLeon);
         repositorioPlantas.insertar(cactus);
-        repositorioPlantas.insertar(pampullo);
+        repositorioPlantas.insertar(crisantemo);
 
     }
 

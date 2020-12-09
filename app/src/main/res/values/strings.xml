@@ -8,4 +8,93 @@
     <string name="mygarden_blancoSplash">MyGarden</string>
     <string name="mygarden_negroSplash">MyGarden</string>
     <string name="tv_NoPlantas">Pulsa el botón para añadir plantas</string>
+    <string name="datosGirasol">NOMBRE COMÚN: Girasol
+        NOMBRE CIENTÍFICO: Helianthus annuus
+        TEMPORADA: Primavera</string>
+    <string name="descripcionGirasol">Plantas anuales (como lo indica su nombre específico latín: annuus) que pueden medir tres metros de alto.
+Los tallos son generalmente erectos e hispidos. La mayoría de las hojas son caulinares, alternas, pecioladas,
+con base cordiforme y bordes aserrados. La cara inferior es usualmente más o menos hispida, a veces glandulosa y la superior glabra.
+El involucro es hemiesférico o anchado y mide 15-40 mm y hasta más de 20 cm.
+Las brácteas involucrales llamadas filarios se encuentran en número de 20-30, y hasta más de 100,
+ovaladas a lanceoladas —brutalmente estrechadas en el ápice— nerviadas longitudinalmente, con el borde generalmente hispido o hirsuto,
+al igual que sus caras exteriores, raramente son glabras. Receptáculo con escamas centimétricas tridentadas, con el diente mediano más grande y la punta hirsuta.
+    </string>
+    <string name="girasol_titulo_info">GIRASOL</string>
+    <string name="aloe_vera_titulo_info">ALOE VERA</string>
+    <string name="datosAloe">NOMBRE COMÚN: Aloe Vera
+NOMBRE CIENTÍFICO: Aloe Barbadensis Miller
+TEMPORADA: Todo el año.</string>
+    <string name="descripcionAloe">
+Arbusto acaule o con tallo corto de hasta 30 cm, erecto, sin rebrotes laterales. 
+Las hojas, que pueden medir hasta 40-50 cm de largo por 10-15 cm de ancho en ejemplares adultos,
+se disponen en forma de roseta basal. Son estrechamente triangular-lanceoladas, canaliculadas, 
+rectas, erecto-patentes, herbáceas, de un verde-grisáceo, glaucas,
+ligeramente recubiertas de pruina y sin manchas —excepto unas motas alargadas y claras en los hijuelos
+y en la base de algunas hojas más viejas—, dentadas solo en el margen, con dientes de unos 2 mm, gruesos, 
+duros, retrorsos, de un color más claro que el del limbo. 
+    </string>
+    <string name="rosa_titulo_info">ROSA</string>
+    <string name="datosRosa">NOMBRE COMÚN: Aloe Vera
+NOMBRE CIENTÍFICO: Aloe Barbadensis Miller
+TEMPORADA: Todo el año.</string>
+    <string name="descripcionRosa">
+Los rosales son arbustos o trepadoras (a veces colgantes), generalmente espinosos, que alcanzan de dos a cinco metros de altura,
+en ocasiones, pueden llegar a los 20 m trepando sobre otras plantas. Tienen tallos semileñosos, casi siempre erectos (a veces rastreros),
+algunos de textura rugosa y escamosa. Presentan notables formaciones epidérmicas persistentes, bien desarrolladas y de formas variadas,
+conocidas como espinas o aguijones. Las hojas pueden ser perennes o caducas,
+pecioladas e imparipinnadas con cinco a nueve folíolos de borde aserrado y estípulas basales.
+Es frecuente la presencia de glándulas anexas, odoríferas o no, sobre los márgenes.
+    </string>
+    <string name="clavel_titulo_info">CLAVEL</string>
+    <string name="datosClavel">NOMBRE COMÚN: Clavel
+NOMBRE CIENTÍFICO: Dianthus caryophyllus
+TEMPORADA: Casi todo el año.</string>
+    <string name="descripcionClavel">El clavel es una planta herbácea perteneciente a la familia de las Caryophyllaceae, difundida en las regiones mediterráneas.
+Es espontánea en la flora de la península ibérica. En su forma típica es una planta cespitosa,​
+con numerosos vástagos de hasta 1 m de altura. Sus hojas son lineales, angostas, opuestas y envainadoras, más anchas las basales que las caulinares.
+Cada tallo forma una flor terminal. Sus flores son vistosas, pedunculadas en panícula o cima laxa, a veces solitarias, de bordes más o menos dentados.
+Plantas de clavel bajo condiciones de cultivo.
+La planta perenne de base leñosa alcanza una altura entre los 45 y los 60 cm La floración se produce durante casi todo el año.
+Normalmente son flores de fuerte fragancia. Es la flor nacional de España.
+    </string>
+    <string name="crisantemo_titulo_info">CRISANTEMO</string>
+    <string name="datosCrisantemo">NOMBRE COMÚN: Crisantemo
+NOMBRE CIENTÍFICO: Chrysanthemum
+TEMPORADA: Primavera/Verano.</string>
+    <string name="descripcionCrisantemo">Las especies son hierbas sufruticosas, perennes, que alcanzan un tamaño de hasta 1,5 m de alto.
+Toda la planta es ligeramente aromática. Los tallos son erectos o patentes, frondosos.
+Hojas alternas, lobadas, lanceoladas a ovadas, 4–9 (–12) cm de largo y 4–6 cm de ancho,
+los segmentos enteros a gruesamente dentados, haz glabro, envés piloso con tricomas 2-armados, glanduloso;
+pecíolos hasta 4 cm de largo, con 2 segmentos auriculados en la base.
+    </string>
+    <string name="manzanilla_titulo_info">MANZANILLA</string>
+    <string name="datosManzanilla">NOMBRE COMÚN: Manzanilla
+NOMBRE CIENTÍFICO: Anthemis nobilis
+TEMPORADA: Todo el año.</string>
+    <string name="descripcionManzanilla">La manzanilla común es una hierba perenne. Presenta hojas sésiles, alternas, bi- o tripinnatilobuladas,
+finalmente divididas, con los folíolos lineares. En posición terminal presenta en verano una inflorescencia en forma de capítulo paniculado.
+Las flores radiales son unas 20, con la lígula blanca, mientras que los del disco son numerosos, hermafroditas, con la corola amarilla,
+las puntas de las anteras ovadas y el extremo del estilo trunco. La cabeza floral no supera 1 cm de diámetro.
+Los frutos son aquenios cilíndricos, de más o menos 1 mm de diámetro, algo mayores los radiales. La polinización la realizan himenópteros,
+pero la planta (manzanilla) es capaz de auto polinizarse.
+    </string>
+    <string name="dienteLeon_titulo_info">DIENTE DE LEÓN</string>
+    <string name="datosDienteLeon">NOMBRE COMÚN: Diente de León
+NOMBRE CIENTÍFICO: Taraxacum officinale
+TEMPORADA: Primavera.</string>
+    <string name="descripcionDienteLeon">Esta planta perenne con raíz primaria larga y roseta basal, suele alcanzar 40 cm de altura.1
+Tiene hojas alternas lanceoladas con una nervadura central, sin peciolo diferenciado,
+pinnatipartidas con lóbulos en forma triangular de márgenes dentados y agudos, a veces presenta microvellosidades.
+El tallo permanece siempre en un estado extremadamente acortado, es por esto que se denominan plantas acaulescentes.
+    </string>
+    <string name="cactus_titulo_info">CACTUS</string>
+    <string name="datosCactus">NOMBRE COMÚN: Cactus
+NOMBRE CIENTÍFICO: Cactaceae
+TEMPORADA: Todo el año.</string>
+    <string name="descripcionCactus">son conocidas en conjunto como cactos, cactus o cacti. Esta familia es originaria de América.
+Sin embargo, hay una excepción, Rhipsalis baccifera, que está extendida en África tropical, Madagascar y Ceilán.
+Se cree que la colonización del Viejo Mundo por esta especie es relativamente reciente (unos cuantos cientos de años),
+probablemente transportada en el aparato digestivo de pájaros migratorios en forma de semillas,
+bien directamente desde América o a partir de poblaciones surgidas en África como consecuencia del transporte de esclavos.
+    </string>
 </resources>

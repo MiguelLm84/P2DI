@@ -1,15 +1,14 @@
 package com.miguel_lm.appjardin.ui;
 
+import android.app.AlertDialog;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.miguel_lm.appjardin.R;
@@ -40,38 +39,18 @@ public class ViewHolderPlanta extends RecyclerView.ViewHolder{
         tvNombre.setText(planta.getNombre());
 
         linearLayoutItemPlanta.setOnClickListener(v -> seleccionarPlanta.plantaInfoPulsado(planta));
-        linearLayoutItemPlanta.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
+        linearLayoutItemPlanta.setOnLongClickListener(v -> {
 
-                final PopupMenu popupMenu = new PopupMenu(context, linearLayoutItemPlanta);
-                popupMenu.getMenuInflater().inflate(R.menu.menu_contextual_planta, popupMenu.getMenu());
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-
-                        switch (item.getItemId()) {
-                            case R.id.accionEliminar:
-                                seleccionarPlanta.eliminarPlanta(planta);
-                                break;
-                        }
-
-                        return false;
-                    }
-                });
-                popupMenu.show();
-
-                return false;
-
-
-
-
-
-                //seleccionarPlanta.eliminarPlanta(planta);
-
-                //return false;
-
-            }
+            AlertDialog.Builder builderEliminar_Confirmar = new AlertDialog.Builder(context);
+            builderEliminar_Confirmar.setIcon(R.drawable.exclamation);
+            builderEliminar_Confirmar.setMessage("¿Eliminar los elementos?");
+            builderEliminar_Confirmar.setNegativeButton("Cancelar", null);
+            builderEliminar_Confirmar.setPositiveButton("Borrar", (dialogInterface, which) -> {
+                seleccionarPlanta.eliminarPlanta(planta);
+                Toast.makeText(context, "Planta eliminada", Toast.LENGTH_SHORT).show();
+            });
+            builderEliminar_Confirmar.create().show();
+            return false;
         });
     }
 }
