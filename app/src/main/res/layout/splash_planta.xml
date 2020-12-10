@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/splash_girasol"
+    android:background="@drawable/girasol_info"
     android:paddingStart="16dp"
     android:paddingTop="55dp"
     android:paddingEnd="16dp"

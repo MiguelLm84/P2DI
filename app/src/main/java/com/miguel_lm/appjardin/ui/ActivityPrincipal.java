@@ -49,6 +49,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
         comprobarElementos();
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -168,7 +169,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
 
         Intent intent = new Intent(this, ActivityDetalle.class);
         startActivity(intent);
-
+        overridePendingTransition(R.anim.zoom_back_in,R.anim.zoom_back);
        //Planta planta = new Planta();
     }
 

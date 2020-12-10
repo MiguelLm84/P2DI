@@ -24,7 +24,7 @@
     </style>
 
     <style name="SplashTheme" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/splash_girasol</item>
+        <item name="android:windowBackground">@drawable/girasol_info</item>
     </style>
 
     <style name="AppTheme" parent="@style/Theme.AppCompat">AppTheme_splash</style>
