@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e0e0e0"
+    android:background="@drawable/fondo_activity_detalle"
     app:layout_gravity="center_horizontal"
     tools:context=".ui.ActivityDetalle">
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,9 +21,6 @@
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
             android:orientation="vertical"
             tools:ignore="NotSibling">
 
@@ -32,7 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="243dp"
                 android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/girasol_info"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/aloe_info"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -74,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/convergence"
                 android:text="@string/nomCientificoAloe"
@@ -86,6 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="2dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/convergence"

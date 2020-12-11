@@ -23,12 +23,14 @@ import com.miguel_lm.appjardin.core.RepositorioPlantas;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.miguel_lm.appjardin.ui.ActivityDetalle.CLAVE_PLANTA;
+
 public class ActivityPrincipal extends AppCompatActivity implements SeleccionarPlanta {
 
-   private AdapterPlantas adapterPlantas;
-   private List<Planta> listaPlantasEscogidas;
+    private AdapterPlantas adapterPlantas;
+    private List<Planta> listaPlantasEscogidas;
 
-   private TextView textViewNoPlantas;
+    private TextView textViewNoPlantas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,10 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
         adapterPlantas = new AdapterPlantas(this, this);
         recyclerViewPlantas.setAdapter(adapterPlantas);
 
-        listaPlantasEscogidas = new ArrayList<>();
+        listaPlantasEscogidas = RepositorioPlantas.getInstance(this).obtenerPlantasSeleccionadas();
+
+        adapterPlantas.actualizarListado(listaPlantasEscogidas);
+
         comprobarElementos();
     }
 
@@ -70,17 +75,16 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
 
     private void guardarPlantas() {
 
-        Planta girasol = new Planta(R.drawable.girasol,"Girasol","","");
-        Planta rosa = new Planta(R.drawable.rosa,"Rosa","","");
-        Planta aloe = new Planta(R.drawable.aloe,"Aloe Vera","","");
-        Planta clavel = new Planta(R.drawable.clavel,"Clavel","","");
-        Planta manzanilla = new Planta(R.drawable.manzanilla,"Manzanilla","","");
-        Planta dienteDeLeon = new Planta(R.drawable.diente_de_leon,"Diente de León","","");
-        Planta cactus = new Planta(R.drawable.cactus,"Cactus","","");
-        Planta crisantemo = new Planta(R.drawable.pampullo,"Crisantemo","","");
-        
+        Planta girasol = new Planta("girasol", getString(R.string.nomComunGirasol), getString(R.string.nomCientificoGirasol), getString(R.string.temporadaGirasol), getString(R.string.descripcionGirasol), 0);
+        Planta rosa = new Planta("rosa", getString(R.string.nomComunRosa), getString(R.string.nomCientificoRosa), getString(R.string.temporadaRosa), getString(R.string.descripcionRosa), 0);
+        Planta aloe = new Planta("aloe", getString(R.string.nomComunAloe), getString(R.string.nomCientificoAloe), getString(R.string.temporadaAloe), getString(R.string.descripcionAloe), 0);
+        Planta clavel = new Planta("clavel", getString(R.string.nomComunClavel), getString(R.string.nomCientificoClavel), getString(R.string.temporadaClavel), getString(R.string.descripcionClavel), 0);
+        Planta manzanilla = new Planta("manzanilla", getString(R.string.nomComunManzanilla), getString(R.string.nomCientificoManzanilla), getString(R.string.temporadaManzanilla), getString(R.string.descripcionManzanilla), 0);
+        Planta dienteDeLeon = new Planta("dienteDeLeon", getString(R.string.nomComunDienteLeon), getString(R.string.nomCientificoDienteLeon), getString(R.string.temporadaDienteLeon), getString(R.string.descripcionDienteLeon), 0);
+        Planta cactus = new Planta("cactus", getString(R.string.nomComunCactus), getString(R.string.nomCientificoCactus), getString(R.string.temporadaCactus), getString(R.string.descripcionCactus), 0);
+        Planta crisantemo = new Planta("crisantemo", getString(R.string.nomComunCrisantemo), getString(R.string.nomCientificoCrisantemo), getString(R.string.temporadaCrisantemo), getString(R.string.descripcionCrisantemo), 0);
+
         RepositorioPlantas repositorioPlantas = RepositorioPlantas.getInstance(this);
-        repositorioPlantas.borrarDatos();
         repositorioPlantas.insertar(girasol);
         repositorioPlantas.insertar(rosa);
         repositorioPlantas.insertar(aloe);
@@ -97,7 +101,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
         insertarPlantasEnRecycler();
     }
 
-    public void insertarPlantasEnRecycler(){
+    public void insertarPlantasEnRecycler() {
 
         // Lista de todas las plantas de la BD
         final List<Planta> listaPlantasBD = RepositorioPlantas.getInstance(this).obtenerPlantas();
@@ -128,7 +132,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
 
         String[] arrayPlantas = new String[listaPlantasParaDialogo.size()];
         final boolean[] plantasSeleccionadas = new boolean[listaPlantasParaDialogo.size()];
-        for (int i=0; i < listaPlantasParaDialogo.size(); i++)
+        for (int i = 0; i < listaPlantasParaDialogo.size(); i++)
             arrayPlantas[i] = listaPlantasParaDialogo.get(i).getNombre();
         builder.setMultiChoiceItems(arrayPlantas, plantasSeleccionadas, (dialog, i, isChecked) -> plantasSeleccionadas[i] = isChecked);
 
@@ -137,9 +141,15 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
             @Override
             public void onClick(final DialogInterface dialog, int which) {
 
-                for (int i = plantasSeleccionadas.length-1; i>=0; i--) {
+                for (int i = plantasSeleccionadas.length - 1; i >= 0; i--) {
                     if (plantasSeleccionadas[i]) {
+
                         Planta plantaEscogida = listaPlantasParaDialogo.get(i);
+
+                        // Marcar a 1 el campo 'seleccionado' y guardarlo en la BD
+                        plantaEscogida.setSeleccionada(1);
+                        RepositorioPlantas.getInstance(ActivityPrincipal.this).actualizarPlanta(plantaEscogida);
+
                         listaPlantasEscogidas.add(plantaEscogida);
                     }
                 }
@@ -158,6 +168,10 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
 
         // Dialogo para confirmar borrado
 
+        // Marcar a 0 el campo 'seleccionado' y guardarlo en la BD
+        planta.setSeleccionada(0);
+        RepositorioPlantas.getInstance(ActivityPrincipal.this).actualizarPlanta(planta);
+
         listaPlantasEscogidas.remove(planta);
         adapterPlantas.actualizarListado(listaPlantasEscogidas);
         comprobarElementos();
@@ -168,9 +182,14 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
     public void plantaInfoPulsado(Planta planta) {
 
         Intent intent = new Intent(this, ActivityDetalle.class);
+
+        intent.putExtra(CLAVE_PLANTA, planta);
+
+        //intent.putExtra(CLAVE_PLANTA, planta.getKey());
+
         startActivity(intent);
-        overridePendingTransition(R.anim.zoom_back_in,R.anim.zoom_back);
-       //Planta planta = new Planta();
+        overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back);
+        //Planta planta = new Planta();
     }
 
     private void comprobarElementos() {
@@ -189,7 +208,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
 
         String[] arrayEntrenamientos = new String[listaPlantas.size()];
         final boolean[] plantasSeleccionados = new boolean[listaPlantas.size()];
-        for (int i=0; i < listaPlantas.size(); i++)
+        for (int i = 0; i < listaPlantas.size(); i++)
             arrayEntrenamientos[i] = listaPlantas.get(i).getNombre();
         builderElimina.setMultiChoiceItems(arrayEntrenamientos, plantasSeleccionados, new DialogInterface.OnMultiChoiceClickListener() {
 
@@ -214,11 +233,11 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
 
-                        for (int i = 0 ; i<listaPlantas.size() ; i++)
+                        for (int i = 0; i < listaPlantas.size(); i++)
                             if (plantasSeleccionados[i])
                                 RepositorioPlantas.getInstance(ActivityPrincipal.this).eliminarPlanta(listaPlantas.get(i));
 
-                        for (int i = listaPlantas.size()-1; i>=0; i--) {
+                        for (int i = listaPlantas.size() - 1; i >= 0; i--) {
                             if (plantasSeleccionados[i]) {
                                 listaPlantas.remove(i);
                             }

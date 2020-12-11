@@ -1,14 +1,10 @@
 package com.miguel_lm.appjardin.core;
 
-import android.graphics.Picture;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-
 import androidx.annotation.NonNull;
-import androidx.room.*;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
-import java.sql.Blob;
 
 @Entity(tableName = "Plantas")
 public class Planta implements Serializable {
@@ -16,27 +12,36 @@ public class Planta implements Serializable {
     @PrimaryKey(autoGenerate = true)
     protected int key;
     @NonNull
-    private int imagen;
+    private String imagen;
+    @NonNull
+    private int seleccionada;
     @NonNull
     private String nombre;
     @NonNull
-    private String datos;
+    private String nombreCientifico;
+    @NonNull
+    private String temporada;
     @NonNull
     private String descripcion;
 
-    public Planta(int imagen, String nombre, String datos, String descripcion){
-       this.imagen = imagen;
-       this.nombre = nombre;
-       this.datos=datos;
-       this.descripcion=descripcion;
+    public Planta(String imagen, @NonNull String nombre, @NonNull String nombreCientifico, @NonNull String temporada, @NonNull String descripcion, int seleccionada) {
+        this.imagen = imagen;
+        this.nombre = nombre;
+        this.nombreCientifico = nombreCientifico;
+        this.temporada = temporada;
+        this.descripcion = descripcion;
+        this.seleccionada = seleccionada;
     }
 
-    /** Constructor de copia */
+
+
     public Planta(Planta planta) {
         this.imagen = planta.imagen;
         this.nombre = planta.nombre;
-        this.datos = planta.datos;
+        this.nombreCientifico = planta.nombreCientifico;
+        this.temporada = planta.temporada;
         this.descripcion = planta.descripcion;
+        this.seleccionada = planta.seleccionada;
     }
 
     public int getKey() {
@@ -47,11 +52,11 @@ public class Planta implements Serializable {
         this.key = key;
     }
 
-    public int getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(int imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
@@ -63,14 +68,6 @@ public class Planta implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getDatos() {
-        return datos;
-    }
-
-    public void setDatos(String datos) {
-        this.nombre = datos;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -78,4 +75,32 @@ public class Planta implements Serializable {
     public void setDescripcion(String descripcion) {
         this.nombre = descripcion;
     }
+
+    @NonNull
+    public String getNombreCientifico() {
+        return nombreCientifico;
+    }
+
+    @NonNull
+    public String getTemporada() {
+        return temporada;
+    }
+
+    public int getSeleccionada() {
+        return seleccionada;
+    }
+
+    public void setSeleccionada(int seleccionada) {
+        this.seleccionada = seleccionada;
+    }
+
+    public void setNombreCientifico(@NonNull String nombreCientifico) {
+        this.nombreCientifico = nombreCientifico;
+    }
+
+    public void setTemporada(@NonNull String temporada) {
+        this.temporada = temporada;
+    }
+
+
 }

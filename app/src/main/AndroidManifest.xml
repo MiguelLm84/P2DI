@@ -9,17 +9,21 @@
         android:roundIcon="@mipmap/ic_planta_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.ActivityDetalle"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui.ActivityPrincipal"
-            android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme">
+        <activity android:name=".ui.ActivitySplash"
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.ActivityDetalle"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.ActivityPrincipal"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"
@@ -27,6 +31,3 @@
     </application>
 
 </manifest>
-
-
-<!--android:theme="@style/Theme.AppJardin"-->

@@ -35,7 +35,9 @@ public class ViewHolderPlanta extends RecyclerView.ViewHolder{
 
     public void mostrarPlanta(final Planta planta, final Context context) {
 
-        imagenView.setImageResource(planta.getImagen());
+        int imagenId = context.getResources().getIdentifier(planta.getImagen(), "drawable", context.getPackageName());
+
+        imagenView.setImageResource(imagenId);
         tvNombre.setText(planta.getNombre());
 
         linearLayoutItemPlanta.setOnClickListener(v -> seleccionarPlanta.plantaInfoPulsado(planta));

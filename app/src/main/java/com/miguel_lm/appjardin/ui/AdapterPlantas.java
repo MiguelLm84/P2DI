@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.miguel_lm.appjardin.R;
 import com.miguel_lm.appjardin.core.Planta;
-import com.miguel_lm.appjardin.core.RepositorioPlantas;
 
 import java.util.List;
 

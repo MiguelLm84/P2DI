@@ -1,28 +1,30 @@
 package com.miguel_lm.appjardin.ui;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.miguel_lm.appjardin.R;
 import com.miguel_lm.appjardin.core.Planta;
-import com.miguel_lm.appjardin.core.RepositorioPlantas;
-
-import java.util.List;
 
 public class ActivityDetalle extends AppCompatActivity {
 
     private Planta planta;
+
+    public static final String CLAVE_PLANTA = "1234";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        planta = (Planta) getIntent().getSerializableExtra(CLAVE_PLANTA);
+        seleccionPlantaInfo();
     }
 
     @Override
@@ -34,26 +36,22 @@ public class ActivityDetalle extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void seleccionPlantaInfo(Planta planta){
-
-        List<Planta> listaPlantas = RepositorioPlantas.getInstance(ActivityDetalle.this).obtenerPlantas();
+    private void seleccionPlantaInfo() {
 
         ImageView imagenPlanta = findViewById(R.id.imageViewPlanta);
-        TextView tvTitulo=findViewById(R.id.tvNombre_InfoPlanta);
-        TextView tvNomComunPlanta=findViewById(R.id.tvNomComunPlanta);
-        TextView tvNomCintificoPlanta=findViewById(R.id.tvNomCientificoPlanta);
-        TextView tvNomTemporadaPlanta=findViewById(R.id.tvTemporadaPlanta);
+        TextView tvTitulo = findViewById(R.id.tvNombre_InfoPlanta);
+        TextView tvNomComunPlanta = findViewById(R.id.tvNomComunPlanta);
+        TextView tvNomCientificoPlanta = findViewById(R.id.tvNomCientificoPlanta);
+        TextView tvNomTemporadaPlanta = findViewById(R.id.tvTemporadaPlanta);
+        TextView tvDescripcion = findViewById(R.id.tvDescripcion);
 
-        for(int i=0;i<listaPlantas.size();i++){
-            if(listaPlantas.get(i).getNombre()==planta.getNombre()){
-                if(planta.getNombre()=="girasol"){
-                    imagenPlanta.setImageResource(R.drawable.girasol_info);
-                    tvTitulo.setText(R.string.girasol_titulo_info);
-                    tvNomComunPlanta.setText(R.string.nomComunGirasol);
-                    tvNomCintificoPlanta.setText(R.string.nomCientificoGirasol);
-                    tvNomTemporadaPlanta.setText(R.string.temporadaGirasol);
-                }
-            }
-        }
+        int imagenId = getResources().getIdentifier(planta.getImagen(), "drawable", getPackageName());
+
+        imagenPlanta.setImageResource(imagenId);        tvTitulo.setText(planta.getNombre());
+        tvNomComunPlanta.setText(getString(R.string.titulo_nombre_comun) + " " +  planta.getNombre());
+        tvNomCientificoPlanta.setText(getString(R.string.titulo_nombre_cientifico) + " " +  planta.getNombreCientifico());
+        tvNomTemporadaPlanta.setText(getString(R.string.titulo_temporada) + " " + planta.getTemporada());
+        tvDescripcion.setText(planta.getDescripcion());
+
     }
 }

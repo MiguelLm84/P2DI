@@ -16,6 +16,9 @@ public interface DAOPlanta {
     @Query("SELECT * FROM Plantas")
     List<Planta> obtenerPlantas();
 
+    @Query("SELECT * FROM Plantas where seleccionada == 1")
+    List<Planta> obtenerPlantasSeleccionadas();
+
     @Query("SELECT * FROM Plantas WHERE nombre LIKE :nombre")
     Planta buscarPlanta(String nombre);
 

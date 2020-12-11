@@ -8,9 +8,9 @@
     <string name="mygarden_blancoSplash">MyGarden</string>
     <string name="mygarden_negroSplash">MyGarden</string>
     <string name="tv_NoPlantas">Pulsa el botón para añadir plantas</string>
-    <string name="nomComunGirasol">NOMBRE COMÚN: Girasol</string>
-    <string name="nomCientificoGirasol">NOMBRE CIENTÍFICO: Helianthus annuus</string>
-    <string name="temporadaGirasol">TEMPORADA: Primavera</string>
+    <string name="nomComunGirasol">Girasol</string>
+    <string name="nomCientificoGirasol">Helianthus annuus</string>
+    <string name="temporadaGirasol">Primavera</string>
     <string name="descripcionGirasol">Plantas anuales (como lo indica su nombre específico latín: annuus) que pueden medir tres metros de alto.
 Los tallos son generalmente erectos e hispidos. La mayoría de las hojas son caulinares, alternas, pecioladas,
 con base cordiforme y bordes aserrados. La cara inferior es usualmente más o menos hispida, a veces glandulosa y la superior glabra.
@@ -21,9 +21,9 @@ al igual que sus caras exteriores, raramente son glabras. Receptáculo con escam
     </string>
     <string name="girasol_titulo_info">GIRASOL</string>
     <string name="aloe_vera_titulo_info">ALOE VERA</string>
-    <string name="nomComunAloe">NOMBRE COMÚN: Aloe Vera</string>
-    <string name="nomCientificoAloe">NOMBRE CIENTÍFICO: Aloe Barbadensis Miller</string>
-    <string name="temporadaAloe">TEMPORADA: Todo el año.</string>
+    <string name="nomComunAloe">Aloe Vera</string>
+    <string name="nomCientificoAloe">Aloe Barbadensis Miller</string>
+    <string name="temporadaAloe">Todo el año.</string>
     <string name="descripcionAloe">
 Arbusto acaule o con tallo corto de hasta 30 cm, erecto, sin rebrotes laterales. 
 Las hojas, que pueden medir hasta 40-50 cm de largo por 10-15 cm de ancho en ejemplares adultos,
@@ -34,9 +34,9 @@ y en la base de algunas hojas más viejas—, dentadas solo en el marg
 duros, retrorsos, de un color más claro que el del limbo. 
     </string>
     <string name="rosa_titulo_info">ROSA</string>
-    <string name="nomComunRosa">NOMBRE COMÚN: Rosa</string>
-    <string name="nomCientificoRosa">NOMBRE CIENTÍFICO: Rosa sp</string>
-    <string name="temporadaRosa">TEMPORADA: Todo el año.</string>
+    <string name="nomComunRosa">Rosa</string>
+    <string name="nomCientificoRosa">Rosa sp</string>
+    <string name="temporadaRosa">Todo el año.</string>
     <string name="descripcionRosa">
 Los rosales son arbustos o trepadoras (a veces colgantes), generalmente espinosos, que alcanzan de dos a cinco metros de altura,
 en ocasiones, pueden llegar a los 20 m trepando sobre otras plantas. Tienen tallos semileñosos, casi siempre erectos (a veces rastreros),
@@ -46,9 +46,9 @@ pecioladas e imparipinnadas con cinco a nueve folíolos de borde aserrado y est�
 Es frecuente la presencia de glándulas anexas, odoríferas o no, sobre los márgenes.
     </string>
     <string name="clavel_titulo_info">CLAVEL</string>
-    <string name="nomComunClavel">NOMBRE COMÚN: Clavel</string>
-    <string name="nomCientificoClavel">NOMBRE CIENTÍFICO: Dianthus caryophyllus</string>
-    <string name="temporadaClavel">TEMPORADA: Casi todo el año.</string>
+    <string name="nomComunClavel">Clavel</string>
+    <string name="nomCientificoClavel">Dianthus caryophyllus</string>
+    <string name="temporadaClavel">Casi todo el año.</string>
     <string name="descripcionClavel">El clavel es una planta herbácea perteneciente a la familia de las Caryophyllaceae, difundida en las regiones mediterráneas.
 Es espontánea en la flora de la península ibérica. En su forma típica es una planta cespitosa,​
 con numerosos vástagos de hasta 1 m de altura. Sus hojas son lineales, angostas, opuestas y envainadoras, más anchas las basales que las caulinares.
@@ -58,9 +58,9 @@ La planta perenne de base leñosa alcanza una altura entre los 45 y los 60 cm La
 Normalmente son flores de fuerte fragancia. Es la flor nacional de España.
     </string>
     <string name="crisantemo_titulo_info">CRISANTEMO</string>
-    <string name="nomComunCrisantemo">NOMBRE COMÚN: Crisantemo</string>
-    <string name="nomCientificoCrisantemo">NOMBRE CIENTÍFICO: Chrysanthemum</string>
-    <string name="temporadaCrisantemo">TEMPORADA: Primavera/Verano.</string>
+    <string name="nomComunCrisantemo">Crisantemo</string>
+    <string name="nomCientificoCrisantemo">Chrysanthemum</string>
+    <string name="temporadaCrisantemo">Primavera/Verano.</string>
     <string name="descripcionCrisantemo">Las especies son hierbas sufruticosas, perennes, que alcanzan un tamaño de hasta 1,5 m de alto.
 Toda la planta es ligeramente aromática. Los tallos son erectos o patentes, frondosos.
 Hojas alternas, lobadas, lanceoladas a ovadas, 4–9 (–12) cm de largo y 4–6 cm de ancho,
@@ -68,9 +68,9 @@ los segmentos enteros a gruesamente dentados, haz glabro, envés piloso con tric
 pecíolos hasta 4 cm de largo, con 2 segmentos auriculados en la base.
     </string>
     <string name="manzanilla_titulo_info">MANZANILLA</string>
-    <string name="nomComunManzanilla">NOMBRE COMÚN: Manzanilla</string>
-    <string name="nomCientifico">NOMBRE CIENTÍFICO: Anthemis nobilis</string>
-    <string name="temporadaManzanilla">TEMPORADA: Todo el año.</string>
+    <string name="nomComunManzanilla">Manzanilla</string>
+    <string name="nomCientificoManzanilla">Anthemis nobilis</string>
+    <string name="temporadaManzanilla">Todo el año.</string>
     <string name="descripcionManzanilla">La manzanilla común es una hierba perenne. Presenta hojas sésiles, alternas, bi- o tripinnatilobuladas,
 finalmente divididas, con los folíolos lineares. En posición terminal presenta en verano una inflorescencia en forma de capítulo paniculado.
 Las flores radiales son unas 20, con la lígula blanca, mientras que los del disco son numerosos, hermafroditas, con la corola amarilla,
@@ -79,22 +79,25 @@ Los frutos son aquenios cilíndricos, de más o menos 1 mm de diámetro, algo ma
 pero la planta (manzanilla) es capaz de auto polinizarse.
     </string>
     <string name="dienteLeon_titulo_info">DIENTE DE LEÓN</string>
-    <string name="nomComunDienteLeon">NOMBRE COMÚN: Diente de León</string>
-    <string name="temporadaDienteLeon">TEMPORADA: Primavera.</string>
-    <string name="nomCientificoDienteLeon">NOMBRE CIENTÍFICO: Taraxacum officinale</string>
+    <string name="nomComunDienteLeon">Diente de León</string>
+    <string name="temporadaDienteLeon">Primavera.</string>
+    <string name="nomCientificoDienteLeon">Taraxacum officinale</string>
     <string name="descripcionDienteLeon">Esta planta perenne con raíz primaria larga y roseta basal, suele alcanzar 40 cm de altura.1
 Tiene hojas alternas lanceoladas con una nervadura central, sin peciolo diferenciado,
 pinnatipartidas con lóbulos en forma triangular de márgenes dentados y agudos, a veces presenta microvellosidades.
 El tallo permanece siempre en un estado extremadamente acortado, es por esto que se denominan plantas acaulescentes.
     </string>
     <string name="cactus_titulo_info">CACTUS</string>
-    <string name="nomComunCactus">NOMBRE COMÚN: Cactus</string>
-    <string name="nomCientificoCactus">NOMBRE CIENTÍFICO: Cactaceae</string>
-    <string name="temporadaCactus">TEMPORADA: Todo el año.</string>
+    <string name="nomComunCactus">Cactus</string>
+    <string name="nomCientificoCactus">Cactaceae</string>
+    <string name="temporadaCactus">Todo el año.</string>
     <string name="descripcionCactus">son conocidas en conjunto como cactos, cactus o cacti. Esta familia es originaria de América.
 Sin embargo, hay una excepción, Rhipsalis baccifera, que está extendida en África tropical, Madagascar y Ceilán.
 Se cree que la colonización del Viejo Mundo por esta especie es relativamente reciente (unos cuantos cientos de años),
 probablemente transportada en el aparato digestivo de pájaros migratorios en forma de semillas,
 bien directamente desde América o a partir de poblaciones surgidas en África como consecuencia del transporte de esclavos.
     </string>
+    <string name="titulo_nombre_comun">NOMBRE COMÚN:</string>
+    <string name="titulo_nombre_cientifico">NOMBRE CIENTÍFICO:</string>
+    <string name="titulo_temporada">TEMPORADA:</string>
 </resources>

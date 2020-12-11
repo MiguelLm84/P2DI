@@ -1,58 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/girasol_info"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_splash"
     android:paddingStart="16dp"
     android:paddingTop="55dp"
     android:paddingEnd="16dp"
     android:paddingBottom="32dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ContraintLayoutSlash"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_tituloSlashNegro"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
-        android:background="#3E00BFA5">
-
-        <TextView
-            android:id="@+id/tv_tituloSlashBlanco"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:fontFamily="@font/lilita_one"
-            android:gravity="center"
-            android:text="@string/mygarden_blancoSplash"
-            android:textColor="#FFFFFF"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/tv_tituloSlashNegro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lilita_one"
-            android:gravity="center"
-            android:text="@string/mygarden_negroSplash"
-            android:textColor="#020202"
-            android:textSize="37sp"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/russo_one"
+        android:gravity="center_horizontal"
+        android:text="@string/mygarden_negroSplash"
+        android:textAllCaps="false"
+        android:textColor="#020202"
+        android:textSize="39sp"
+        android:textStyle="normal" />
 
 </RelativeLayout>

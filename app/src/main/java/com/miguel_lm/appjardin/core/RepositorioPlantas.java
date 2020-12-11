@@ -27,6 +27,10 @@ public class RepositorioPlantas {
         return daoPlanta.obtenerPlantas();
     }
 
+    public List<Planta> obtenerPlantasSeleccionadas() {
+        return daoPlanta.obtenerPlantasSeleccionadas();
+    }
+
     public void eliminarPlanta(Planta planta) {
         daoPlanta.eliminarPlanta(planta);
     }
