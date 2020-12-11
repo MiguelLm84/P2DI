@@ -103,13 +103,8 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
 
     public void insertarPlantasEnRecycler() {
 
-        // Lista de todas las plantas de la BD
         final List<Planta> listaPlantasBD = RepositorioPlantas.getInstance(this).obtenerPlantas();
-
-        // Lista de plantas que se mostrarán en el diálogo (no contendrá las plantas ya seleccionadas)
         final List<Planta> listaPlantasParaDialogo = new ArrayList<>();
-
-        // Eliminar de las plantas de la BD las que ya están escogidas
         for (Planta planta : listaPlantasBD) {
 
             boolean plantaEncontrada = false;
@@ -146,7 +141,6 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
 
                         Planta plantaEscogida = listaPlantasParaDialogo.get(i);
 
-                        // Marcar a 1 el campo 'seleccionado' y guardarlo en la BD
                         plantaEscogida.setSeleccionada(1);
                         RepositorioPlantas.getInstance(ActivityPrincipal.this).actualizarPlanta(plantaEscogida);
 
@@ -168,7 +162,6 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
 
         // Dialogo para confirmar borrado
 
-        // Marcar a 0 el campo 'seleccionado' y guardarlo en la BD
         planta.setSeleccionada(0);
         RepositorioPlantas.getInstance(ActivityPrincipal.this).actualizarPlanta(planta);
 
@@ -182,20 +175,14 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
     public void plantaInfoPulsado(Planta planta) {
 
         Intent intent = new Intent(this, ActivityDetalle.class);
-
         intent.putExtra(CLAVE_PLANTA, planta);
-
-        //intent.putExtra(CLAVE_PLANTA, planta.getKey());
-
         startActivity(intent);
         overridePendingTransition(R.anim.zoom_back_in, R.anim.zoom_back);
-        //Planta planta = new Planta();
     }
 
     private void comprobarElementos() {
 
         textViewNoPlantas.setVisibility(listaPlantasEscogidas.isEmpty() ? View.VISIBLE : View.GONE);
-
     }
 
     private void accionEliminar() {

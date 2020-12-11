@@ -101,6 +101,4 @@ public class Planta implements Serializable {
     public void setTemporada(@NonNull String temporada) {
         this.temporada = temporada;
     }
-
-
 }
