@@ -2,6 +2,7 @@ package com.miguel_lm.appjardin.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,6 +44,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
@@ -197,6 +199,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
         final List<Planta> listaPlantas = RepositorioPlantas.getInstance(this).obtenerPlantas();
 
         AlertDialog.Builder builderElimina = new AlertDialog.Builder(ActivityPrincipal.this);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         builderElimina.setIcon(R.drawable.remove_symbol);
         builderElimina.setTitle("Eliminar");
 
