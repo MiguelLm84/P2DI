@@ -30,7 +30,7 @@
                 android:layout_height="243dp"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/aloe_info"
+                app:srcCompat="@drawable/aloe"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -40,11 +40,12 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:fontFamily="@font/convergence"
+                android:background="#020202"
+                android:fontFamily="@font/russo_one"
                 android:scrollbarStyle="outsideInset"
                 android:text="@string/aloe_vera_titulo_info"
                 android:textAlignment="center"
-                android:textColor="#020202"
+                android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 

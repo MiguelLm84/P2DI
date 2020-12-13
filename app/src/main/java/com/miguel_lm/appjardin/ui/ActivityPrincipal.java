@@ -2,13 +2,21 @@ package com.miguel_lm.appjardin.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ActionBar;
+import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TypefaceSpan;
+import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,7 +37,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
 
     private AdapterPlantas adapterPlantas;
     private List<Planta> listaPlantasEscogidas;
-
+    private long tiempoParaSalir = 0;
     private TextView textViewNoPlantas;
 
     @Override
@@ -37,7 +45,8 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+        
         textViewNoPlantas = findViewById(R.id.textViewNoPlantas);
 
         guardarPlantas();
@@ -69,7 +78,9 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
         if (item.getItemId() == R.id.accionEliminar) {
             accionEliminar();
         }
-
+        if (item.getItemId() == R.id.accionAnhadirPlanta) {
+            insertarPlantasEnRecycler();
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -80,7 +91,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
         Planta aloe = new Planta("aloe", getString(R.string.nomComunAloe), getString(R.string.nomCientificoAloe), getString(R.string.temporadaAloe), getString(R.string.descripcionAloe), 0);
         Planta clavel = new Planta("clavel", getString(R.string.nomComunClavel), getString(R.string.nomCientificoClavel), getString(R.string.temporadaClavel), getString(R.string.descripcionClavel), 0);
         Planta manzanilla = new Planta("manzanilla", getString(R.string.nomComunManzanilla), getString(R.string.nomCientificoManzanilla), getString(R.string.temporadaManzanilla), getString(R.string.descripcionManzanilla), 0);
-        Planta dienteDeLeon = new Planta("dienteDeLeon", getString(R.string.nomComunDienteLeon), getString(R.string.nomCientificoDienteLeon), getString(R.string.temporadaDienteLeon), getString(R.string.descripcionDienteLeon), 0);
+        Planta diente_de_leon = new Planta("diente_de_leon", getString(R.string.nomComunDienteLeon), getString(R.string.nomCientificoDienteLeon), getString(R.string.temporadaDienteLeon), getString(R.string.descripcionDienteLeon), 0);
         Planta cactus = new Planta("cactus", getString(R.string.nomComunCactus), getString(R.string.nomCientificoCactus), getString(R.string.temporadaCactus), getString(R.string.descripcionCactus), 0);
         Planta crisantemo = new Planta("crisantemo", getString(R.string.nomComunCrisantemo), getString(R.string.nomCientificoCrisantemo), getString(R.string.temporadaCrisantemo), getString(R.string.descripcionCrisantemo), 0);
 
@@ -90,7 +101,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
         repositorioPlantas.insertar(aloe);
         repositorioPlantas.insertar(clavel);
         repositorioPlantas.insertar(manzanilla);
-        repositorioPlantas.insertar(dienteDeLeon);
+        repositorioPlantas.insertar(diente_de_leon);
         repositorioPlantas.insertar(cactus);
         repositorioPlantas.insertar(crisantemo);
 
@@ -131,27 +142,23 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
             arrayPlantas[i] = listaPlantasParaDialogo.get(i).getNombre();
         builder.setMultiChoiceItems(arrayPlantas, plantasSeleccionadas, (dialog, i, isChecked) -> plantasSeleccionadas[i] = isChecked);
 
-        builder.setPositiveButton("Añadir", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Añadir", (dialog, which) -> {
 
-            @Override
-            public void onClick(final DialogInterface dialog, int which) {
+            for (int i = plantasSeleccionadas.length - 1; i >= 0; i--) {
+                if (plantasSeleccionadas[i]) {
 
-                for (int i = plantasSeleccionadas.length - 1; i >= 0; i--) {
-                    if (plantasSeleccionadas[i]) {
+                    Planta plantaEscogida = listaPlantasParaDialogo.get(i);
 
-                        Planta plantaEscogida = listaPlantasParaDialogo.get(i);
+                    plantaEscogida.setSeleccionada(1);
+                    RepositorioPlantas.getInstance(ActivityPrincipal.this).actualizarPlanta(plantaEscogida);
 
-                        plantaEscogida.setSeleccionada(1);
-                        RepositorioPlantas.getInstance(ActivityPrincipal.this).actualizarPlanta(plantaEscogida);
-
-                        listaPlantasEscogidas.add(plantaEscogida);
-                    }
+                    listaPlantasEscogidas.add(plantaEscogida);
                 }
-
-                adapterPlantas.actualizarListado(listaPlantasEscogidas);
-                comprobarElementos();
-                Toast.makeText(ActivityPrincipal.this, "Plantas añadidas", Toast.LENGTH_SHORT).show();
             }
+
+            adapterPlantas.actualizarListado(listaPlantasEscogidas);
+            comprobarElementos();
+            Toast.makeText(ActivityPrincipal.this, "Plantas añadidas", Toast.LENGTH_SHORT).show();
         });
         builder.setNegativeButton("Cancelar", null);
         builder.create().show();
@@ -197,17 +204,11 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
         final boolean[] plantasSeleccionados = new boolean[listaPlantas.size()];
         for (int i = 0; i < listaPlantas.size(); i++)
             arrayEntrenamientos[i] = listaPlantas.get(i).getNombre();
-        builderElimina.setMultiChoiceItems(arrayEntrenamientos, plantasSeleccionados, new DialogInterface.OnMultiChoiceClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int i, boolean isChecked) {
-                plantasSeleccionados[i] = isChecked;
-            }
-        });
+        builderElimina.setMultiChoiceItems(arrayEntrenamientos, plantasSeleccionados, (dialog, i, isChecked) -> plantasSeleccionados[i] = isChecked);
 
         builderElimina.setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
 
-            List<Planta> listaPlantas = RepositorioPlantas.getInstance(ActivityPrincipal.this).obtenerPlantas();
+            final List<Planta> listaPlantas = RepositorioPlantas.getInstance(ActivityPrincipal.this).obtenerPlantas();
 
             @Override
             public void onClick(final DialogInterface dialog, int which) {
@@ -216,28 +217,38 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
                 builderEliminar_Confirmar.setIcon(R.drawable.exclamation);
                 builderEliminar_Confirmar.setMessage("¿Eliminar los elementos?");
                 builderEliminar_Confirmar.setNegativeButton("Cancelar", null);
-                builderEliminar_Confirmar.setPositiveButton("Borrar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
+                builderEliminar_Confirmar.setPositiveButton("Borrar", (dialogInterface, which1) -> {
 
-                        for (int i = 0; i < listaPlantas.size(); i++)
-                            if (plantasSeleccionados[i])
-                                RepositorioPlantas.getInstance(ActivityPrincipal.this).eliminarPlanta(listaPlantas.get(i));
+                    for (int i = 0; i < listaPlantas.size(); i++)
+                        if (plantasSeleccionados[i])
+                            RepositorioPlantas.getInstance(ActivityPrincipal.this).eliminarPlanta(listaPlantas.get(i));
 
-                        for (int i = listaPlantas.size() - 1; i >= 0; i--) {
-                            if (plantasSeleccionados[i]) {
-                                listaPlantas.remove(i);
-                            }
+                    for (int i = listaPlantas.size() - 1; i >= 0; i--) {
+                        if (plantasSeleccionados[i]) {
+                            listaPlantas.remove(i);
                         }
-                        ActivityPrincipal.this.adapterPlantas.notifyDataSetChanged();
-                        adapterPlantas.actualizarListado(listaPlantas);
-                        Toast.makeText(ActivityPrincipal.this, "Entrenamiento eliminado", Toast.LENGTH_SHORT).show();
                     }
+                    ActivityPrincipal.this.adapterPlantas.notifyDataSetChanged();
+                    adapterPlantas.actualizarListado(listaPlantas);
+                    Toast.makeText(ActivityPrincipal.this, "Entrenamiento eliminado", Toast.LENGTH_SHORT).show();
                 });
                 builderEliminar_Confirmar.create().show();
             }
         });
         builderElimina.setNegativeButton("Cancelar", null);
         builderElimina.create().show();
+    }
+
+    @Override
+    public void onBackPressed(){
+
+        long tiempo = System.currentTimeMillis();
+        if (tiempo - tiempoParaSalir > 3000) {
+            tiempoParaSalir = tiempo;
+            Toast.makeText(this, "Presione de nuevo 'Atrás' si desea salir",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

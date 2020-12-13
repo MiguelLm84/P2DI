@@ -1,10 +1,10 @@
 package com.miguel_lm.appjardin.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.transition.Explode;
 
 import com.miguel_lm.appjardin.R;
 
@@ -14,13 +14,12 @@ public class ActivitySplash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_planta);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
+        new Handler().postDelayed(() -> startActivity(new Intent(ActivitySplash.this, ActivityPrincipal.class)), 1500);
 
-                startActivity(new Intent(ActivitySplash.this, ActivityPrincipal.class));
-            }
-        }, 3000);
+        Explode explode = new Explode();
+        explode.setDuration(500);
+        getWindow().setExitTransition(explode);
     }
 }

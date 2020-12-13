@@ -47,11 +47,17 @@ public class ActivityDetalle extends AppCompatActivity {
 
         int imagenId = getResources().getIdentifier(planta.getImagen(), "drawable", getPackageName());
 
-        imagenPlanta.setImageResource(imagenId);        tvTitulo.setText(planta.getNombre());
+        imagenPlanta.setImageResource(imagenId);
+        tvTitulo.setText(planta.getNombre());
         tvNomComunPlanta.setText(getString(R.string.titulo_nombre_comun) + " " +  planta.getNombre());
         tvNomCientificoPlanta.setText(getString(R.string.titulo_nombre_cientifico) + " " +  planta.getNombreCientifico());
         tvNomTemporadaPlanta.setText(getString(R.string.titulo_temporada) + " " + planta.getTemporada());
         tvDescripcion.setText(planta.getDescripcion());
+    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
     }
 }
