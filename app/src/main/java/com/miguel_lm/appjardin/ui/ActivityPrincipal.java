@@ -55,8 +55,7 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
 
         comprobarElementos();
     }
-
-
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -97,7 +96,6 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
         repositorioPlantas.insertar(diente_de_leon);
         repositorioPlantas.insertar(cactus);
         repositorioPlantas.insertar(crisantemo);
-
     }
 
     public void accionInsertarPlantas(View view) {
@@ -176,8 +174,6 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
     @Override
     public void eliminarPlanta(Planta planta) {
 
-        // Dialogo para confirmar borrado
-
         planta.setSeleccionada(0);
         RepositorioPlantas.getInstance(ActivityPrincipal.this).actualizarPlanta(planta);
 
@@ -185,7 +181,6 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
         adapterPlantas.actualizarListado(listaPlantasEscogidas);
         comprobarElementos();
     }
-
 
     @Override
     public void plantaInfoPulsado(Planta planta) {
@@ -202,7 +197,6 @@ public class ActivityPrincipal extends AppCompatActivity implements SeleccionarP
     }
 
     private void accionEliminar() {
-
 
         AlertDialog.Builder builderElimina = new AlertDialog.Builder(ActivityPrincipal.this);
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
