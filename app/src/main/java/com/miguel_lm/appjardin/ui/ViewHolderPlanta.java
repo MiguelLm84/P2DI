@@ -49,6 +49,7 @@ public class ViewHolderPlanta extends RecyclerView.ViewHolder{
             builderEliminar_Confirmar.setNegativeButton("Cancelar", null);
             builderEliminar_Confirmar.setPositiveButton("Borrar", (dialogInterface, which) -> {
                 seleccionarPlanta.eliminarPlanta(planta);
+                //comprobarElementos();
                 Toast.makeText(context, "Planta eliminada", Toast.LENGTH_SHORT).show();
             });
             builderEliminar_Confirmar.create().show();
